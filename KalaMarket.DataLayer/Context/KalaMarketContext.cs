@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KalaMarket.DataLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace KalaMarket.DataLayer.Context
@@ -13,5 +14,7 @@ namespace KalaMarket.DataLayer.Context
         {
 
         }
+
+        public DbSet<MainSlider> MainSliders { get; set; }
     }
 }
