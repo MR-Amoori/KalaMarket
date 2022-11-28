@@ -4,4 +4,13 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="wwwroot\AdminPanel\" />
+    <Folder Include="wwwroot\CssSite\ImageUser\" />
+    <Folder Include="wwwroot\CssSite\Css\" />
+    <Folder Include="wwwroot\CssSite\Js\" />
+    <Folder Include="wwwroot\CssSite\ImageSite\" />
+  </ItemGroup>
+
 </Project>
