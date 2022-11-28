@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KalaMarket.Core.Repositories.Services;
+using KalaMarket.Core.Service.Interface;
 using KalaMarket.DataLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +30,12 @@ namespace KalaMarket
 
             services.AddDbContext<KalaMarketContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("KalaMarketLocal")));
+
+            #region Ioc
+
+            services.AddScoped<IMainSliderService, MainSliderService>();
+           
+            #endregion
 
         }
 

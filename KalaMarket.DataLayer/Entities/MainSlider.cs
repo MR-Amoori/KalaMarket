@@ -31,8 +31,11 @@ namespace KalaMarket.DataLayer.Entities
         [MaxLength(100, ErrorMessage = "* وارد کردن بیش از {0} کاراکتر مجاز نیست")]
         public int SliderSort { get; set; }
 
-        [Display(Name = "نمایش")]
-        public bool IsActive { get; set; }
+        [Required(ErrorMessage = "* وارد کردن {0} اجباری است")]
+        [Display(Name = "تصویر اسلایدر")]
+        public string SliderImage { get; set; }
+
+        [Display(Name = "نمایش")] public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

@@ -1266,7 +1266,7 @@ table.dataTable thead > tr > th {
 }
 div.dataTables_filter,
 div.dataTables_paginate {
-  text-align: left;
+  text-align: right;
 }
 .paginate_button {
   display: inline-block !important;

@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KalaMarket.Core\KalaMarket.Core.csproj" />
     <ProjectReference Include="..\KalaMarket.DataLayer\KalaMarket.DataLayer.csproj" />
   </ItemGroup>
 

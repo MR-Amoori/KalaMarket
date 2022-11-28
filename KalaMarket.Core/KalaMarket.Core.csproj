@@ -8,8 +8,11 @@
     <Folder Include="ExtensionMethod\" />
     <Folder Include="Security\" />
     <Folder Include="Sender\" />
-    <Folder Include="Service\Interface\" />
     <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KalaMarket.DataLayer\KalaMarket.DataLayer.csproj" />
   </ItemGroup>
 
 </Project>
