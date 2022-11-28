@@ -7,14 +7,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KalaMarket.DataLayer.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace KalaMarket
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; set; }
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(options => options.EnableEndpointRouting = false);
+
+            services.AddDbContext<KalaMarketContext>(options => 
+            options.UseSqlServer(Configuration.GetConnectionString("KalaMarketLocal")));
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
