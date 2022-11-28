@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KalaMarket", "KalaMarket\Ka
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KalaMarket.DataLayer", "KalaMarket.DataLayer\KalaMarket.DataLayer.csproj", "{538B1E55-2658-4ACA-AEB0-2DEB92AAC2D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KalaMarket.Core", "KalaMarket.Core\KalaMarket.Core.csproj", "{98A6029C-1054-416B-8D43-46EA1652BFB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{538B1E55-2658-4ACA-AEB0-2DEB92AAC2D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{538B1E55-2658-4ACA-AEB0-2DEB92AAC2D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{538B1E55-2658-4ACA-AEB0-2DEB92AAC2D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98A6029C-1054-416B-8D43-46EA1652BFB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98A6029C-1054-416B-8D43-46EA1652BFB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98A6029C-1054-416B-8D43-46EA1652BFB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98A6029C-1054-416B-8D43-46EA1652BFB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
