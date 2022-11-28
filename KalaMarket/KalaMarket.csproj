@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="wwwroot\AdminPanel\" />
-    <Folder Include="wwwroot\CssSite\ImageUser\" />
-    <Folder Include="wwwroot\CssSite\Css\" />
-    <Folder Include="wwwroot\CssSite\Js\" />
-    <Folder Include="wwwroot\CssSite\ImageSite\" />
+    <Folder Include="wwwroot\main\assets\images\menu-main\card\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
 </Project>
