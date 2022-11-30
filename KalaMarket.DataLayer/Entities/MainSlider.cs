@@ -28,7 +28,7 @@ namespace KalaMarket.DataLayer.Entities
 
         [Required(ErrorMessage = "* وارد کردن {0} اجباری است")]
         [Display(Name = "مرتب سازی")]
-        [MaxLength(100, ErrorMessage = "* وارد کردن بیش از {0} کاراکتر مجاز نیست")]
+        [Range(1,10,ErrorMessage = "* عدد وارد شده باید بین {1} و {2} باشد")]
         public int SliderSort { get; set; }
 
         [Required(ErrorMessage = "* وارد کردن {0} اجباری است")]

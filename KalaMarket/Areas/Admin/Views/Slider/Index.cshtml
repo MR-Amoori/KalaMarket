@@ -4,21 +4,14 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="">
+<div style="margin-top: 7rem">
     <div class="col-sm-12">
         <div class="panel">
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="m-b-30">
-                            <button id="addToTable" class="btn btn-primary waves-effect waves-light">افزودن <i class="fa fa-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="m-b-30">
-                            <button id="addToTable" class="btn btn-primary waves-effect waves-light">افزودن <i class="fa fa-plus"></i></button>
+                            <a asp-action="AddMainSlider" asp-area="Admin" asp-controller="Slider" id="addToTable" class="btn btn-primary waves-effect waves-light">افزودن <i class="fa fa-plus"></i></a>
                         </div>
                     </div>
                 </div>
