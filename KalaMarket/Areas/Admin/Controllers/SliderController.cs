@@ -56,10 +56,14 @@ namespace KalaMarket.Areas.Admin.Controllers
         public IActionResult EditMainSlider(int id)
         {
             ViewData["Id"] = id;
-            return View("AddMainSlider", _mainSliderService.FindSliderBy(id));
+            var model = _mainSliderService.FindSliderBy(id);
+            if (model != null)
+                return View("AddMainSlider", model);
+            else
+                return NotFound();
         }
 
-        
+
         public IActionResult EditMainSliderAction(MainSlider mainSlider)
         {
             if (ModelState.IsValid)
@@ -77,5 +81,15 @@ namespace KalaMarket.Areas.Admin.Controllers
 
             return View("AddMainSlider", mainSlider);
         }
+
+        public IActionResult DeleteMainSlider(int id)
+        {
+            var result = _mainSliderService.DeleteSlider(id);
+            if (result)
+                return RedirectToAction(nameof(Index));
+            else
+                return NotFound();
+        }
+
     }
 }

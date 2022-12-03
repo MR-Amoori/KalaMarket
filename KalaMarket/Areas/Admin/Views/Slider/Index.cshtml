@@ -17,13 +17,7 @@
                 </div>
                 <div class="editable-responsive">
                     <div id="datatable-editable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div id="datatable-editable_filter" class="dataTables_filter">
-                                    <label>جستجو : <input type="search" class="form-control input-sm col-12" placeholder="" aria-controls="datatable-editable"></label>
-                                </div>
-                            </div>
-                        </div>
+  
                         <div class="row">
                             <div class="col-sm-12">
                                 <table class="table table-striped dataTable no-footer" id="datatable-editable" role="grid" aria-describedby="datatable-editable_info">
@@ -49,16 +43,16 @@
                                                  <td>@slider.SliderAlt</td>
                                                  <td>@slider.SliderImage</td>
                                                  <td class="actions">
-                                                     <a href="#" class="hidden on-editing save-row">
+                                                     <a asp-action="DeleteMainSlider" asp-controller="Slider" asp-route-id="@slider.SliderId" class="hidden on-editing save-row">
                                                          <i class="fa fa-save"></i>
                                                      </a>
-                                                     <a href="#" class="hidden on-editing cancel-row">
+                                                     <a asp-action="EditMainSlider" asp-controller="Slider" asp-route-id="@slider.SliderId" class="hidden on-editing cancel-row">
                                                          <i class="fa fa-times"></i>
                                                      </a>
-                                                     <a href="#" class="on-default edit-row">
+                                                     <a asp-action="EditMainSlider" asp-controller="Slider" asp-route-id="@slider.SliderId" class="on-default edit-row">
                                                          <i class="fa fa-pencil"></i>
                                                      </a>
-                                                     <a href="#" class="on-default remove-row">
+                                                     <a asp-action="DeleteMainSlider" asp-controller="Slider" asp-route-id="@slider.SliderId" class="on-default remove-row">
                                                          <i class="fa fa-trash-o"></i>
                                                      </a>
                                                  </td>
