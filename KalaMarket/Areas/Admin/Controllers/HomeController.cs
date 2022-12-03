@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace KalaMarket.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class AdminDashboardController : Controller
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {
