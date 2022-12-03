@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 using KalaMarket.Core.Service.Interface;
 using KalaMarket.DataLayer.Entities;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace KalaMarket.Areas.Admin.Controllers
 {
@@ -32,17 +33,49 @@ namespace KalaMarket.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddMainSlider(MainSlider slider)
+        public IActionResult AddMainSlider(MainSlider slider, int id)
         {
             if (ModelState.IsValid)
             {
+                if (id > 0)
+                {
+                    slider.SliderId = id;
+                    return RedirectToAction("EditMainSliderAction", slider);
+                }
+
                 int res = _mainSliderService.AddSlider(slider);
-                return RedirectToAction(nameof(Index)); 
+                return RedirectToAction(nameof(Index));
             }
             else
             {
                 return View(slider);
             }
+        }
+
+        [HttpGet]
+        public IActionResult EditMainSlider(int id)
+        {
+            ViewData["Id"] = id;
+            return View("AddMainSlider", _mainSliderService.FindSliderBy(id));
+        }
+
+        
+        public IActionResult EditMainSliderAction(MainSlider mainSlider)
+        {
+            if (ModelState.IsValid)
+            {
+                bool res = _mainSliderService.UpdateSlider(mainSlider);
+                if (res)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View("AddMainSlider", mainSlider);
+                }
+            }
+
+            return View("AddMainSlider", mainSlider);
         }
     }
 }
