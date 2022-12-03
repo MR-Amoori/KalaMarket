@@ -44,10 +44,17 @@ namespace KalaMarket.Areas.Admin.Controllers
                 }
 
                 int res = _mainSliderService.AddSlider(slider);
+                TempData["Result"] = "AddSlider";
                 return RedirectToAction(nameof(Index));
             }
             else
             {
+                if (id > 0)
+                {
+                    return RedirectToAction("EditMainSlider", slider);
+                }
+
+                TempData["Result"] = "Error";
                 return View(slider);
             }
         }
@@ -66,30 +73,29 @@ namespace KalaMarket.Areas.Admin.Controllers
 
         public IActionResult EditMainSliderAction(MainSlider mainSlider)
         {
-            if (ModelState.IsValid)
+            bool res = _mainSliderService.UpdateSlider(mainSlider);
+            if (res)
             {
-                bool res = _mainSliderService.UpdateSlider(mainSlider);
-                if (res)
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-                else
-                {
-                    return View("AddMainSlider", mainSlider);
-                }
+                TempData["Result"] = "Edited";
+                return RedirectToAction(nameof(Index));
             }
-
-            return View("AddMainSlider", mainSlider);
+            else
+            {
+                TempData["Result"] = "Error";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         public IActionResult DeleteMainSlider(int id)
         {
             var result = _mainSliderService.DeleteSlider(id);
             if (result)
+            {
+                TempData["Result"] = "Deleted";
                 return RedirectToAction(nameof(Index));
+            }
             else
                 return NotFound();
         }
-
     }
 }

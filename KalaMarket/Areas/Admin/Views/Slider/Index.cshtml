@@ -9,15 +9,43 @@
         <div class="panel">
             <div class="panel-body">
                 <div class="row">
+                    @if (TempData["Result"] != null)
+                    {
+                        if (TempData["Result"].ToString() == "AddSlider")
+                        {
+                            <div class="alert alert-success text-center">
+                                <p>اسلایدر جدید با موفقیت اضافه شد</p>
+                            </div>
+                        }
+                        else if (TempData["Result"].ToString() == "Error")
+                        {
+                            <div class="alert alert-danger text-center">
+                                <p>عملیات نا موفق بود</p>
+                            </div>
+                        }
+                        else if (TempData["Result"].ToString() == "Edited")
+                        {
+                            <div class="alert alert-success text-center">
+                                <p>اسلایدر با موفقیت تغییر یافت</p>
+                            </div>
+                        }
+                        else if (TempData["Result"].ToString() == "Deleted")
+                        {
+                            <div class="alert alert-warning text-center">
+                                <p>اسلایدر با موفقیت حذف شد</p>
+                            </div>
+                        }
+                    }
                     <div class="col-sm-6">
                         <div class="m-b-30">
                             <a asp-action="AddMainSlider" asp-area="Admin" asp-controller="Slider" id="addToTable" class="btn btn-primary waves-effect waves-light">افزودن <i class="fa fa-plus"></i></a>
+                            <a asp-action="Index" asp-area="Admin" asp-controller="Home" id="addToTable" class="btn btn-primary waves-effect waves-light">پنل ادمین <i class="fa fa-arrow-left"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="editable-responsive">
                     <div id="datatable-editable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-  
+
                         <div class="row">
                             <div class="col-sm-12">
                                 <table class="table table-striped dataTable no-footer" id="datatable-editable" role="grid" aria-describedby="datatable-editable_info">
