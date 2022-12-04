@@ -7,19 +7,17 @@ using System.Threading.Tasks;
 
 namespace KalaMarket.DataLayer.Entities.Product
 {
-    public class Category
+    public class PropertyName
     {
-        [Key] public int CategoryId { get; set; }
+        [Key] public int PropertyNameId { get; set; }
 
         [Required(ErrorMessage = "* وارد کردن {0} اجباری است")]
-        [Display(Name = "عنوان دسته بندی")]
+        [Display(Name = "عنوان خصوصیت")]
         [MaxLength(100, ErrorMessage = "* وارد کردن بیش از {0} کاراکتر مجاز نیست")]
-        [MinLength(3, ErrorMessage = "* وارد کردن کمتر از {0} کاراکتر مجاز نیست")]
-        public string CategoryName { get; set; }
+        [MinLength(5, ErrorMessage = "* وارد کردن کمتر از {0} کاراکتر مجاز نیست")]
+        public string PropertyNameTitle { get; set; }
 
         #region Relation
-
-        public List<Product> Products { get; set; }
 
         public List<PropertyNameToCategory> PropertyNameToCategories { get; set; }
 
