@@ -1,0 +1,56 @@
+﻿@model IEnumerable<KalaMarket.DataLayer.Entities.Product.ProductColor>
+
+@{
+    ViewData["Title"] = "نمایش رنگ های محصولات";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card-box">
+    <h1>
+        نمایش لیست رنگ ها
+    </h1>
+    <a class="btn btn-primary" asp-action="AddColor">
+        افزودن
+    </a>
+    <br />
+    <br />
+    <table class="table table-bordered table-hover table-striped ">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductColorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductColorCode)
+            </th>
+            <th>
+                رنگ
+            </th>
+            <th>
+                عملیات
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductColorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductColorCode)
+                </td>
+                <td>
+                    <div style="background: @item.ProductColorCode; width: 40px; height: 40px"></div>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductColorId"><i class="fa fa-pencil"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProductColorId"><i class="fa fa-trash-o"></i></a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</div>
