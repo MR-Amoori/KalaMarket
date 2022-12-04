@@ -34,7 +34,9 @@ namespace KalaMarket
             #region Ioc
 
             services.AddScoped<IMainSliderService, MainSliderService>();
-           
+            services.AddScoped<IProductService, ProductService>();
+
+
             #endregion
 
         }
