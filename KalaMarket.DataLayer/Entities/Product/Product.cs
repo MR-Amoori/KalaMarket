@@ -65,6 +65,7 @@ namespace KalaMarket.DataLayer.Entities.Product
         [ForeignKey("BrandId")]
         public Brand Brand { get; set; }
 
+        public List<Review> Reviews { get; set; }
 
         #endregion
 
