@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KalaMarket.DataLayer.Entities;
+using KalaMarket.DataLayer.Entities.Product;
+using KalaMarket.DataLayer.Entities.Product.FaQ;
 using Microsoft.EntityFrameworkCore;
 
 namespace KalaMarket.DataLayer.Context
@@ -16,5 +18,33 @@ namespace KalaMarket.DataLayer.Context
         }
 
         public DbSet<MainSlider> MainSliders { get; set; }
+
+        #region FaQ
+
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Question> Questions { get; set; }
+
+        #endregion
+
+        #region Product
+
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductColor> ProductColors { get; set; }
+        public DbSet<ProductGallery> ProductGalleries { get; set; }
+        public DbSet<ProductGarranty> ProductGarranties { get; set; }
+        public DbSet<PropertyName> PropertyNames { get; set; }
+        public DbSet<PropertyNameToCategory> PropertyNameToCategories { get; set; }
+        public DbSet<PropertyValue> PropertyValues { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+
+        #endregion
+
+        #region User
+        public DbSet<User> Users { get; set; }
+
+        #endregion
     }
 }
