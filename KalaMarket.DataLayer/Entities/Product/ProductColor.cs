@@ -22,5 +22,11 @@ namespace KalaMarket.DataLayer.Entities.Product
         [Display(Name = "کد رنگ")]
         [MaxLength(20, ErrorMessage = "* وارد کردن بیش از {0} کاراکتر مجاز نیست")]
         public string ProductColorCode { get; set; }
+
+        #region Relation
+
+        public List<ProductPrice> ProductPrices { get; set; }
+
+        #endregion
     }
 }

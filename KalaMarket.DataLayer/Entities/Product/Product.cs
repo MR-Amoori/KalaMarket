@@ -76,6 +76,8 @@ namespace KalaMarket.DataLayer.Entities.Product
 
         public List<ProductGallery> ProductGalleries { get; set; }
 
+        public List<ProductPrice> ProductPrices { get; set; }
+
 
         #endregion
 

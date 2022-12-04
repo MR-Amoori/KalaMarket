@@ -39,6 +39,7 @@ namespace KalaMarket.DataLayer.Context
         public DbSet<PropertyNameToCategory> PropertyNameToCategories { get; set; }
         public DbSet<PropertyValue> PropertyValues { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<ProductPrice> ProductPrices { get; set; }
 
         #endregion
 

@@ -16,5 +16,12 @@ namespace KalaMarket.DataLayer.Entities.Product
         [Required(ErrorMessage = "* وارد کردن {0} اجباری است")]
         [Display(Name = "نام گارانتی")]
         public string ProductGarrantyName { get; set; }
+
+        #region Relation
+
+        public List<ProductPrice> ProductPrices { get; set; }
+
+
+        #endregion
     }
 }
