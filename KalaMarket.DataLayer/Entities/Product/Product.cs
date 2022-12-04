@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KalaMarket.DataLayer.Entities.Product.FaQ;
 
 namespace KalaMarket.DataLayer.Entities.Product
 {
@@ -66,6 +67,12 @@ namespace KalaMarket.DataLayer.Entities.Product
         public Brand Brand { get; set; }
 
         public List<Review> Reviews { get; set; }
+
+        public List<Question> Questions { get; set; }
+
+        public List<Comment> Comments { get; set; }
+
+        public List<ProductGallery> ProductGalleries { get; set; }
 
         #endregion
 

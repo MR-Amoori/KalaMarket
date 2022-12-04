@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using KalaMarket.DataLayer.Entities.Product.FaQ;
 
 namespace KalaMarket.DataLayer.Entities
 {
@@ -19,5 +20,13 @@ namespace KalaMarket.DataLayer.Entities
         public string Phone { get; set; }
         public DateTime RegisterDate { get; set; }
         public string Email { get; set; }
+
+        #region Relation
+
+        public List<Question> Questions { get; set; }
+
+        public List<Comment> Comments { get; set; }
+
+        #endregion
     }
 }

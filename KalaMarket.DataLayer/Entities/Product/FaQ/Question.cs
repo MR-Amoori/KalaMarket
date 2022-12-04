@@ -30,6 +30,8 @@ namespace KalaMarket.DataLayer.Entities.Product.FaQ
 
         [ForeignKey("UserId")] public User User { get; set; }
 
+        public List<Answer> Answers { get; set; }
+
         #endregion
     }
 }
