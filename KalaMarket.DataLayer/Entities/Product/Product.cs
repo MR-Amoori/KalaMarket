@@ -50,7 +50,10 @@ namespace KalaMarket.DataLayer.Entities.Product
         public List<int> TagIds { get; set; }
 
         public int CategoryId { get; set; }
-        
+
+        public int  BrandId { get; set; }
+
+
         #region Relation
 
         [ForeignKey("CategoryId")]
@@ -59,6 +62,8 @@ namespace KalaMarket.DataLayer.Entities.Product
         [ForeignKey("TagIds")]
         public List<Tag> Tags { get; set; }
 
+        [ForeignKey("BrandId")]
+        public Brand Brand { get; set; }
 
 
         #endregion
