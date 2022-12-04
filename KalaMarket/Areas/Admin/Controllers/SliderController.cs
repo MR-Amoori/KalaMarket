@@ -105,18 +105,24 @@ namespace KalaMarket.Areas.Admin.Controllers
             }
         }
 
-        public IActionResult EditMainSliderAction(MainSlider slider)
+
+        public IActionResult EditMainSliderAction(MainSlider mainSlider)
         {
-            bool res = _mainSliderService.UpdateSlider(slider);
-            if (res)
+            if (ModelState.IsValid)
             {
-                TempData["Result"] = "Edited";
-                return RedirectToAction(nameof(Index));
+                bool res = _mainSliderService.UpdateSlider(mainSlider);
+                if (res)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View("AddMainSlider", mainSlider);
+                }
             }
             else
             {
-                TempData["Result"] = "Error";
-                return RedirectToAction(nameof(Index));
+                return View("AddMainSlider", mainSlider);
             }
         }
 
