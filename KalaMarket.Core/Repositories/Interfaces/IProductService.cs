@@ -12,6 +12,7 @@ namespace KalaMarket.Core.Service.Interface
         bool UpdateColor(ProductColor color);
         ProductColor FindColorBy(int id);
         bool ExsistColor(string nameColor, string ColorCode);
+        bool DeleteColor(int id);
         void Save();
 
         #endregion

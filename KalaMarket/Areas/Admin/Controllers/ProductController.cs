@@ -50,6 +50,28 @@ namespace KalaMarket.Areas.Admin.Controllers
             return RedirectToAction(nameof(ShowAllColor));
         }
 
+        [HttpGet]
+        public IActionResult EditColor(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult EditColor(ProductColor color)
+        {
+            return View();
+        }
+
+        public IActionResult DeleteColor(int id)
+        {
+            if (_productService.DeleteColor(id))
+            {
+                TempData["Result"] = "Deleted";
+                return RedirectToAction(nameof(Index));
+            }
+            TempData["Result"] = "Error";
+            return RedirectToAction(nameof(Index));
+        }
         
 
         #endregion

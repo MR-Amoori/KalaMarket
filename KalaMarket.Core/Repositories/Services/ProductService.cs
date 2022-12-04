@@ -27,7 +27,7 @@ namespace KalaMarket.Core.Repositories.Services
         {
             try
             {
-                if (!ExsistColor(color.ProductColorName,color.ProductColorCode))
+                if (!ExsistColor(color.ProductColorName, color.ProductColorCode))
                 {
                     _context.ProductColors.Add(color);
                     Save();
@@ -46,7 +46,7 @@ namespace KalaMarket.Core.Repositories.Services
         {
             try
             {
-                if (!ExsistColor(color.ProductColorName,color.ProductColorCode))
+                if (!ExsistColor(color.ProductColorName, color.ProductColorCode))
                 {
                     _context.ProductColors.Update(color);
                     Save();
@@ -64,12 +64,25 @@ namespace KalaMarket.Core.Repositories.Services
         public ProductColor FindColorBy(int id)
         {
             return _context.ProductColors.FirstOrDefault(x => x.ProductColorId == id);
-
         }
 
         public bool ExsistColor(string nameColor, string ColorCode)
         {
             return _context.ProductColors.Any(x => x.ProductColorName == nameColor && x.ProductColorCode == ColorCode);
+        }
+
+        public bool DeleteColor(int id)
+        {
+            try
+            {
+                _context.ProductColors.Remove(FindColorBy(id));
+                Save();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public void Save()

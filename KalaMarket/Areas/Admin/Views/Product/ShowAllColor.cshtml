@@ -45,8 +45,8 @@
                     <div style="background: @item.ProductColorCode; width: 40px; height: 40px"></div>
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ProductColorId"><i class="fa fa-pencil"></i></a> |
-                    <a asp-action="Delete" asp-route-id="@item.ProductColorId"><i class="fa fa-trash-o"></i></a>
+                    <a asp-action="EditColor" asp-route-id="@item.ProductColorId"><i class="fa fa-pencil"></i></a> |
+                    <a asp-action="DeleteColor" asp-route-id="@item.ProductColorId"><i class="fa fa-trash-o"></i></a>
                 </td>
             </tr>
         }
