@@ -47,8 +47,12 @@ namespace KalaMarket.DataLayer.Entities.Product
         public bool IsOriginal { get; set; }
         public bool IsDeleted { get; set; }
 
-        
-        public List<int> TagIds { get; set; }
+
+        [Required(ErrorMessage = "* وارد کردن {0} اجباری است")]
+        [Display(Name = "برچسب")]
+        [MaxLength(15, ErrorMessage = "* وارد کردن بیش از {0} کاراکتر مجاز نیست")]
+        [MinLength(3, ErrorMessage = "* وارد کردن کمتر از {0} کاراکتر مجاز نیست")]
+        public string TagName { get; set; }
 
         public int CategoryId { get; set; }
 
@@ -60,8 +64,6 @@ namespace KalaMarket.DataLayer.Entities.Product
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
 
-        [ForeignKey("TagIds")]
-        public List<Tag> Tags { get; set; }
 
         [ForeignKey("BrandId")]
         public Brand Brand { get; set; }
@@ -73,6 +75,7 @@ namespace KalaMarket.DataLayer.Entities.Product
         public List<Comment> Comments { get; set; }
 
         public List<ProductGallery> ProductGalleries { get; set; }
+
 
         #endregion
 
