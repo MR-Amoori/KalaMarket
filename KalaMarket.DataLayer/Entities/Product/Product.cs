@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +29,6 @@ namespace KalaMarket.DataLayer.Entities.Product
         [Display(Name = "امتیاز محصول")]
         public byte ProductStar { get; set; }
 
-        [Display(Name = "برچسب های محصول")]
-        public List<Tag> Tags { get; set; }
-       
         [Display(Name = "تصویر محصول")]
         public string ProductImage { get; set; }
 
@@ -47,5 +45,23 @@ namespace KalaMarket.DataLayer.Entities.Product
         [Display(Name = "اصل بودن کالا")]
         public bool IsOriginal { get; set; }
         public bool IsDeleted { get; set; }
+
+        
+        public List<int> TagIds { get; set; }
+
+        public int CategoryId { get; set; }
+        
+        #region Relation
+
+        [ForeignKey("CategoryId")]
+        public Category Category { get; set; }
+
+        [ForeignKey("TagIds")]
+        public List<Tag> Tags { get; set; }
+
+
+
+        #endregion
+
     }
 }
