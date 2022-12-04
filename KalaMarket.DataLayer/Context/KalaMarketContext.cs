@@ -46,5 +46,19 @@ namespace KalaMarket.DataLayer.Context
         public DbSet<User> Users { get; set; }
 
         #endregion
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            var forieng = modelBuilder.Model.GetEntityTypes()
+                .SelectMany(t => t.GetForeignKeys())
+                .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
+
+            foreach (var fk in forieng)
+            {
+                fk.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

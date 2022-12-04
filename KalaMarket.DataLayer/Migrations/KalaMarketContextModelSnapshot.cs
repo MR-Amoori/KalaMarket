@@ -471,7 +471,7 @@ namespace KalaMarket.DataLayer.Migrations
                     b.HasOne("KalaMarket.DataLayer.Entities.Product.Category", "Category1")
                         .WithMany()
                         .HasForeignKey("SubCategory")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Category1");
@@ -482,7 +482,7 @@ namespace KalaMarket.DataLayer.Migrations
                     b.HasOne("KalaMarket.DataLayer.Entities.Product.FaQ.Question", "Question")
                         .WithMany("Answers")
                         .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Question");
@@ -493,13 +493,13 @@ namespace KalaMarket.DataLayer.Migrations
                     b.HasOne("KalaMarket.DataLayer.Entities.Product.Product", "Product")
                         .WithMany("Comments")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("KalaMarket.DataLayer.Entities.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Product");
@@ -512,13 +512,13 @@ namespace KalaMarket.DataLayer.Migrations
                     b.HasOne("KalaMarket.DataLayer.Entities.Product.Product", "Product")
                         .WithMany("Questions")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("KalaMarket.DataLayer.Entities.User", "User")
                         .WithMany("Questions")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Product");
@@ -531,13 +531,13 @@ namespace KalaMarket.DataLayer.Migrations
                     b.HasOne("KalaMarket.DataLayer.Entities.Product.Brand", "Brand")
                         .WithMany("Products")
                         .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("KalaMarket.DataLayer.Entities.Product.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Brand");
@@ -550,7 +550,7 @@ namespace KalaMarket.DataLayer.Migrations
                     b.HasOne("KalaMarket.DataLayer.Entities.Product.Product", "Product")
                         .WithMany("ProductGalleries")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Product");
@@ -561,13 +561,13 @@ namespace KalaMarket.DataLayer.Migrations
                     b.HasOne("KalaMarket.DataLayer.Entities.Product.Category", "Category")
                         .WithMany("PropertyNameToCategories")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("KalaMarket.DataLayer.Entities.Product.PropertyName", "PropertyName")
                         .WithMany("PropertyNameToCategories")
                         .HasForeignKey("PropertyNameId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -580,7 +580,7 @@ namespace KalaMarket.DataLayer.Migrations
                     b.HasOne("KalaMarket.DataLayer.Entities.Product.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Product");
@@ -591,7 +591,7 @@ namespace KalaMarket.DataLayer.Migrations
                     b.HasOne("KalaMarket.DataLayer.Entities.Product.Product", "Product")
                         .WithMany("Reviews")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Product");
