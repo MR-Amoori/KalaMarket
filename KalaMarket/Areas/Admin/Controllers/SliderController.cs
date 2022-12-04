@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using KalaMarket.Core.ExtensionMethod;
 using KalaMarket.Core.Service.Interface;
 using KalaMarket.DataLayer.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace KalaMarket.Areas.Admin.Controllers
@@ -33,16 +35,47 @@ namespace KalaMarket.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddMainSlider(MainSlider slider, int id)
+        public IActionResult AddMainSlider(MainSlider slider, IFormFile file, int id)
         {
             if (ModelState.IsValid)
             {
                 if (id > 0)
                 {
                     slider.SliderId = id;
+                    string imgNameUpload = "";
+                    if (file != null)
+                    {
+                        imgNameUpload = UploadImg.CreateImage(file);
+                    }
+
+                    if (imgNameUpload == "false")
+                    {
+                        TempData["Result"] = "ErrorUploadImg";
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else if (imgNameUpload != "")
+                    {
+                        var resultDeleteI = UploadImg.DeleteImg("slider-main", slider.SliderImage);
+                        slider.SliderImage = imgNameUpload;
+                    }
+
                     return RedirectToAction("EditMainSliderAction", slider);
                 }
 
+                if (file == null)
+                {
+                    ModelState.AddModelError("SliderImage", "* لطفا برای اسلایدر تصویر انتخاب کنید");
+                    return View(slider);
+                }
+
+                string imgName = UploadImg.CreateImage(file);
+                if (imgName == "false")
+                {
+                    TempData["Result"] = "ErrorUploadImg";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                slider.SliderImage = imgName;
                 int res = _mainSliderService.AddSlider(slider);
                 TempData["Result"] = "AddSlider";
                 return RedirectToAction(nameof(Index));
@@ -72,9 +105,9 @@ namespace KalaMarket.Areas.Admin.Controllers
             }
         }
 
-        public IActionResult EditMainSliderAction(MainSlider mainSlider)
+        public IActionResult EditMainSliderAction(MainSlider slider)
         {
-            bool res = _mainSliderService.UpdateSlider(mainSlider);
+            bool res = _mainSliderService.UpdateSlider(slider);
             if (res)
             {
                 TempData["Result"] = "Edited";
@@ -89,7 +122,9 @@ namespace KalaMarket.Areas.Admin.Controllers
 
         public IActionResult DeleteMainSlider(int id)
         {
-            var result = _mainSliderService.DeleteSlider(id);
+            var slider = _mainSliderService.FindSliderBy(id);
+            var result = _mainSliderService.DeleteSlider(slider);
+            var resultDeleteI = UploadImg.DeleteImg("slider-main", slider.SliderImage);
             if (result)
             {
                 TempData["Result"] = "Deleted";

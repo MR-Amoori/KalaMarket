@@ -31,7 +31,6 @@ namespace KalaMarket.DataLayer.Entities
         [Range(1,10,ErrorMessage = "* عدد وارد شده باید بین {1} و {2} باشد")]
         public int SliderSort { get; set; }
 
-        [Required(ErrorMessage = "* وارد کردن {0} اجباری است")]
         [Display(Name = "تصویر اسلایدر")]
         public string SliderImage { get; set; }
 

@@ -63,9 +63,7 @@ namespace KalaMarket.Core.Repositories.Services
             try
             {
                 MainSlider sliderTarget = FindSliderBy(sliderId);
-                sliderTarget.IsDeleted = true;
-                Save();
-                return true;
+                return DeleteSlider(sliderTarget);
             }
             catch (Exception e)
             {
@@ -86,7 +84,21 @@ namespace KalaMarket.Core.Repositories.Services
                 return false;
             }
         }
-
+      
+        public bool DeleteSlider(MainSlider slider)
+        {
+            try
+            {
+                slider.IsDeleted = true;
+                Save();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+     
         public void Save()
         {
             _context.SaveChanges();
