@@ -20,6 +20,12 @@ namespace KalaMarket.Core.Repositories.Services
 
         public List<MainSlider> ShowAllSliders()
         {
+            //if (page != null)
+            //{
+            //    int skip = (page.Value - 1) * 3; 
+            //    return _context.MainSliders.Where(x => !x.IsDeleted)
+            //        .OrderBy(x => x.SliderSort).Skip(skip).Take(3).ToList();
+            //}
             return _context.MainSliders.Where(x => !x.IsDeleted).OrderBy(x=>x.SliderSort).ToList();
         }
 
@@ -65,7 +71,7 @@ namespace KalaMarket.Core.Repositories.Services
                 MainSlider sliderTarget = FindSliderBy(sliderId);
                 return DeleteSlider(sliderTarget);
             }
-            catch (Exception e)
+            catch
             {
                 return false;
             }
@@ -102,6 +108,18 @@ namespace KalaMarket.Core.Repositories.Services
         public void Save()
         {
             _context.SaveChanges();
+        }
+
+        public int SlidersCount()
+        {
+            var slidersCount = _context.MainSliders.Where(x => !x.IsDeleted).Count();
+            if (slidersCount % 2 != 0)
+            {
+                slidersCount++;
+            }
+
+            slidersCount = slidersCount / 2;
+            return slidersCount;
         }
     }
 }

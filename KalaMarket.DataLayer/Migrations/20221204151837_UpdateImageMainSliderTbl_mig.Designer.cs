@@ -3,14 +3,16 @@ using KalaMarket.DataLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KalaMarket.DataLayer.Migrations
 {
     [DbContext(typeof(KalaMarketContext))]
-    partial class KalaMarketContextModelSnapshot : ModelSnapshot
+    [Migration("20221204151837_UpdateImageMainSliderTbl_mig")]
+    partial class UpdateImageMainSliderTbl_mig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

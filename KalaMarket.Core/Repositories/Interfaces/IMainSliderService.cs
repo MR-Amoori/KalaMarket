@@ -13,5 +13,6 @@ namespace KalaMarket.Core.Service.Interface
         bool DeleteSlider(MainSlider slider);
         bool ShiftDeleteSlider(MainSlider slider);
         void Save();
+        int SlidersCount();
     }
 }
