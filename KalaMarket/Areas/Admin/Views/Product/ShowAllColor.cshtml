@@ -5,6 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+
 <div class="card-box">
     <h1>
         نمایش لیست رنگ ها
@@ -12,9 +13,35 @@
     <a class="btn btn-primary" asp-action="AddColor">
         افزودن
     </a>
-    <br />
-    <br />
-    <table class="table table-bordered table-hover table-striped ">
+    <a class="btn btn-default waves-effect" asp-action="Index">
+        بازگشت
+    </a>
+    <br/>
+    <br/>
+
+    @if (TempData["Result"] != null)
+    {
+        if (TempData["Result"].ToString() == "added")
+        {
+            <div class="alert alert-success text-center">
+                <p>رنگ جدید با موفقیت افزوده شد</p>
+            </div>
+        }
+        else if (TempData["Result"].ToString() == "error")
+        {
+            <div class="alert alert-danger text-center">
+                <p>عملیات نا موفق بود</p>
+            </div>
+        } else if (TempData["Result"].ToString() == "deleted")
+        {
+            <div class="alert alert-warning text-center">
+                <p>رنگ با موفقیت حذف شد</p>
+            </div>
+        }
+        <br/>
+    }
+
+    <table class="table table-bordered table-hover table-striped">
         <thead>
         <tr>
             <th>
@@ -45,8 +72,12 @@
                     <div style="background: @item.ProductColorCode; width: 40px; height: 40px"></div>
                 </td>
                 <td>
-                    <a asp-action="EditColor" asp-route-id="@item.ProductColorId"><i class="fa fa-pencil"></i></a> |
-                    <a asp-action="DeleteColor" asp-route-id="@item.ProductColorId"><i class="fa fa-trash-o"></i></a>
+                    <a asp-action="EditColor" asp-route-id="@item.ProductColorId">
+                        <i class="fa fa-pencil"></i>
+                    </a> |
+                    <a asp-action="DeleteColor" asp-route-id="@item.ProductColorId">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
                 </td>
             </tr>
         }

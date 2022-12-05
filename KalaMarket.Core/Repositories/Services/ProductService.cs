@@ -18,6 +18,8 @@ namespace KalaMarket.Core.Repositories.Services
             _context = context;
         }
 
+        #region Product Color
+
         public List<ProductColor> ShowAllColors()
         {
             return _context.ProductColors.ToList();
@@ -68,7 +70,7 @@ namespace KalaMarket.Core.Repositories.Services
 
         public bool ExsistColor(string nameColor, string ColorCode)
         {
-            return _context.ProductColors.Any(x => x.ProductColorName == nameColor && x.ProductColorCode == ColorCode);
+            return _context.ProductColors.Any(x => x.ProductColorName == nameColor || x.ProductColorCode == ColorCode);
         }
 
         public bool DeleteColor(int id)
@@ -89,5 +91,7 @@ namespace KalaMarket.Core.Repositories.Services
         {
             _context.SaveChanges();
         }
+
+        #endregion
     }
 }

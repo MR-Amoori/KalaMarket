@@ -46,7 +46,7 @@ namespace KalaMarket.Areas.Admin.Controllers
             }
 
             int colorId = _productService.AddColor(color);
-            TempData["Result"] = colorId > 0 ? "true" : "false";
+            TempData["Result"] = colorId > 0 ? "added" : "error";
             return RedirectToAction(nameof(ShowAllColor));
         }
 
@@ -66,11 +66,11 @@ namespace KalaMarket.Areas.Admin.Controllers
         {
             if (_productService.DeleteColor(id))
             {
-                TempData["Result"] = "Deleted";
-                return RedirectToAction(nameof(Index));
+                TempData["Result"] = "deleted";
+                return RedirectToAction(nameof(ShowAllColor));
             }
-            TempData["Result"] = "Error";
-            return RedirectToAction(nameof(Index));
+            TempData["Result"] = "error";
+            return RedirectToAction(nameof(ShowAllColor));
         }
         
 
