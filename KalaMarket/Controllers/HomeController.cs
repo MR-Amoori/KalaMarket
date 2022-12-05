@@ -12,5 +12,11 @@ namespace KalaMarket.Controllers
         {
             return View();
         }
+
+        [Route("NotFound")]
+        public IActionResult Error404()
+        {
+            return View();
+        }
     }
 }

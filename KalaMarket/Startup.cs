@@ -48,6 +48,16 @@ namespace KalaMarket
                 app.UseDeveloperExceptionPage();
             }
 
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == 404)
+                {
+                    context.Request.Path = "/NotFound";
+                    await next();
+                }
+            });
+
             app.UseRouting();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
