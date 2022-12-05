@@ -32,10 +32,17 @@
             <div class="alert alert-danger text-center">
                 <p>عملیات نا موفق بود</p>
             </div>
-        } else if (TempData["Result"].ToString() == "deleted")
+        }
+        else if (TempData["Result"].ToString() == "deleted")
         {
             <div class="alert alert-warning text-center">
                 <p>رنگ با موفقیت حذف شد</p>
+            </div>
+        }
+        else if (TempData["Result"].ToString() == "edited")
+        {
+            <div class="alert alert-success text-center">
+                <p>رنگ با موفقیت ویرایش شد</p>
             </div>
         }
         <br/>

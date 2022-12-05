@@ -48,7 +48,7 @@ namespace KalaMarket.Core.Repositories.Services
         {
             try
             {
-                if (!ExsistColor(color.ProductColorName, color.ProductColorCode))
+                if (!ExsistColor("", color.ProductColorCode))
                 {
                     _context.ProductColors.Update(color);
                     Save();
