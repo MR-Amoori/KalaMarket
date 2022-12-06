@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "محصولات";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card-box">
+    <a asp-action="Index" asp-controller="Home" asp-area="Admin">صفحه اصلی ادمین</a>
+</div>
+
+
+<div class="card-box">
+    <div class="dropdown pull-right">
+        <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false" dideo-checked="true">
+            <i class="zmdi zmdi-more-vert"></i>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a asp-action="AddColor" dideo-checked="true">افزودن</a>
+            </li>
+            <li>
+                <a asp-action="ShowAllColor" dideo-checked="true">دیدن همه رنگ ها</a>
+            </li>
+        </ul>
+    </div>
+    <h4 class="header-title m-t-0 m-b-30">رنگ های محصولات</h4>
+</div>
+
+<div class="card-box">
+    <div class="dropdown pull-right">
+        <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false" dideo-checked="true">
+            <i class="zmdi zmdi-more-vert"></i>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a asp-action="AddColor" dideo-checked="true">افزودن</a>
+            </li>
+            <li>
+                <a asp-action="ShowAllColor" dideo-checked="true">دیدن همه دسته بندی ها</a>
+            </li>
+        </ul>
+    </div>
+    <h4 class="header-title m-t-0 m-b-30">دسته بندی محصولات</h4>
+</div>
