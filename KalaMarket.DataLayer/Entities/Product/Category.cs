@@ -26,7 +26,7 @@ namespace KalaMarket.DataLayer.Entities.Product
         [MinLength(3, ErrorMessage = "* وارد کردن کمتر از {0} کاراکتر مجاز نیست")]
         public string categoriEnTitle { get; set; }
 
-        public int SubCategory { get; set; }
+        public int? SubCategory { get; set; }
 
         public bool IsDeleted { get; set; }
 
