@@ -1,0 +1,104 @@
+﻿@model IEnumerable<KalaMarket.DataLayer.Entities.Product.Category>
+@{
+    ViewData["Title"] = "گروه بندی";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="m-b-30">
+                            <button class="btn btn-primary waves-effect waves-light">افزودن <i class="fa fa-plus"></i></button>
+                            <a asp-action="Index" asp-controller="Home" asp-area="Admin" class="btn btn-default waves-effect">بازگشت <i class="fa fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                @if (TempData["Result"] != null)
+                {
+                    if (TempData["Result"].ToString() == "added")
+                    {
+                        <div class="alert alert-success text-center">
+                            <p>گروه جدید با موفقیت افزوده شد</p>
+                        </div>
+                    }
+                    else if (TempData["Result"].ToString() == "error")
+                    {
+                        <div class="alert alert-danger text-center">
+                            <p>عملیات نا موفق بود</p>
+                        </div>
+                    }
+                    else if (TempData["Result"].ToString() == "deleted")
+                    {
+                        <div class="alert alert-warning text-center">
+                            <p>گروه با موفقیت حذف شد</p>
+                        </div>
+                    }
+                    else if (TempData["Result"].ToString() == "edited")
+                    {
+                        <div class="alert alert-success text-center">
+                            <p>گروه با موفقیت ویرایش شد</p>
+                        </div>
+                    }
+                    <br/>
+                }
+
+
+                <div class="editable-responsive">
+                    <div id="datatable-editable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-striped dataTable no-footer" id="datatable-editable" role="grid" aria-describedby="datatable-editable_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" style="width: 25%;">نام گروه</th>
+                                        <th class="sorting" style="width: 25%;">نام انگلیسی</th>
+                                        <th class="sorting" style="width: 25%;">زیر مجموعه</th>
+                                        <th class="sorting_disabled" style="width: 25%;">فعالیت</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="gradeX odd" role="row">
+                                            <td class="sorting_1">@item.categoriFaTitle</td>
+                                            <td>
+                                                @item.categoriEnTitle
+                                            </td>
+                                            <td>
+                                                <a asp-action="">
+                                                    زیر مجموعه ها
+                                                </a>
+                                            </td>
+                                            <td class="actions">
+                                                <a asp-action="" class="on-default edit-row">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a asp-action="" class="on-default remove-row">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    
+                                    @if (Model == null)
+                                    {
+                                        <td>
+                                            گروهی یافت نشد
+                                        </td>
+                                    }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
