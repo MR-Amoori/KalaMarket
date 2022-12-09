@@ -25,8 +25,9 @@ namespace KalaMarket.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddCategory()
+        public IActionResult AddCategory(int? id)
         {
+            ViewBag.id = id;
             return View();
         }
 
@@ -83,6 +84,8 @@ namespace KalaMarket.Areas.Admin.Controllers
             TempData["Result"] = "error";
             return RedirectToAction(nameof(Index));
         }
+
+
 
     }
 }
