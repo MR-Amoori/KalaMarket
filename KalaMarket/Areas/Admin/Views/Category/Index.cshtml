@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="m-b-30">
-                            <button class="btn btn-primary waves-effect waves-light">افزودن <i class="fa fa-plus"></i></button>
+                            <a asp-action="AddCategory" class="btn btn-primary waves-effect waves-light">افزودن <i class="fa fa-plus"></i></a>
                             <a asp-action="Index" asp-controller="Home" asp-area="Admin" class="btn btn-default waves-effect">بازگشت <i class="fa fa-arrow-left"></i></a>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                                                 @item.categoriEnTitle
                                             </td>
                                             <td>
-                                                <a asp-action="AddCategory" asp-route-id="@item.CategoryId" class="btn btn-success">زیر دسته ها</a>
+                                                <a asp-action="ShowSubCategory" asp-route-categoryId="@item.CategoryId" class="btn btn-success">زیر دسته ها</a>
                                             </td>
                                             <td class="actions">
                                                 <a asp-action="UpdateCategory" asp-route-categoryId="@item.CategoryId" class="on-default edit-row">
