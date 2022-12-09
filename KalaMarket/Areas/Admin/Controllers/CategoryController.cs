@@ -72,5 +72,17 @@ namespace KalaMarket.Areas.Admin.Controllers
             return View(category);
         }
 
+
+        public IActionResult DeleteCategory(int categoryId)
+        {
+            if (_categoryService.DeleteCategory(categoryId))
+            {
+                TempData["Result"] = "deleted";
+                return RedirectToAction(nameof(Index));
+            }
+            TempData["Result"] = "error";
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
