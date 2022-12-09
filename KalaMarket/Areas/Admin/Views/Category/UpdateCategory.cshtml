@@ -1,0 +1,45 @@
+﻿@model KalaMarket.DataLayer.Entities.Product.Category
+
+@{
+    ViewData["Title"] = "UpdateCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="card-box">
+        <h4 class="header-title m-t-0 m-b-30">افزودن گروه محصولات</h4>
+
+        <form asp-action="UpdateCategory" asp-area="Admin" asp-controller="Category" method="post">
+            
+            <input type="hidden"  asp-for="CategoryId" value="@Model.CategoryId" />
+
+            <div class="form-group">
+                <label asp-for="categoriFaTitle"></label>
+                <input asp-for="categoriFaTitle" class="form-control" data-parsley-id="4">
+                <span asp-validation-for="categoriFaTitle"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoriEnTitle"></label>
+                <input asp-for="categoriEnTitle" class="form-control" data-parsley-id="4">
+                <span asp-validation-for="categoriEnTitle"></span>
+            </div>
+
+
+            <div class="form-group text-right m-b-0">
+                <button class="btn btn-warning waves-effect waves-light" type="submit">
+                    ویرایش گروه
+                </button>
+                <a asp-action="Index" class="btn btn-default waves-effect waves-light m-l-5">
+                    بازگشت
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

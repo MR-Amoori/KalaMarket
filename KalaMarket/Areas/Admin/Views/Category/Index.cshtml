@@ -69,8 +69,11 @@
                                             <td>
                                                 @item.categoriEnTitle
                                             </td>
+                                            <td>
+                                                <a asp-action="" class="btn btn-success">زیر دسته ها</a>
+                                            </td>
                                             <td class="actions">
-                                                <a asp-action="" class="on-default edit-row">
+                                                <a asp-action="UpdateCategory" asp-route-categoryId="@item.CategoryId" class="on-default edit-row">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
                                                 <a asp-action="" class="on-default remove-row">

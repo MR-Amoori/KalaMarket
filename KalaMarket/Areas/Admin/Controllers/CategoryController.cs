@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using KalaMarket.Core.Service.Interface;
@@ -40,9 +41,36 @@ namespace KalaMarket.Areas.Admin.Controllers
                     return RedirectToAction(nameof(Index));
                 }
             }
+
             return View(category);
         }
 
+
+        [HttpGet]
+        public IActionResult UpdateCategory(int categoryId)
+        {
+            var categoty = _categoryService.FindCategotyBy(categoryId);
+            if (categoty != null)
+            {
+                return View(categoty);
+            }
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult UpdateCategory(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_categoryService.UpdateCategoty(category))
+                {
+                    TempData["Result"] = "edited";
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            return View(category);
+        }
 
     }
 }
