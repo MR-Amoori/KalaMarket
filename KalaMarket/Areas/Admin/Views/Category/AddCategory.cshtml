@@ -8,13 +8,13 @@
     <div class="card-box">
         @if (ViewBag.id == null)
         {
-            <h4 class="header-title m-t-0 m-b-30">افزودن گروه محصولات</h4>
+            <h4  class="header-title m-t-0 m-b-30">افزودن گروه محصولات</h4>
         }
         else
         {
-            <h4 class="header-title m-t-0 m-b-30">افزودن زیر گروه</h4>
+            <h4  asp-route-id="@ViewBag.id" class="header-title m-t-0 m-b-30">افزودن زیر گروه</h4>
         }
-        <form asp-action="AddCategory" asp-area="Admin" asp-controller="Category" method="post">
+        <form asp-action="AddCategory" asp-route-id="@(ViewBag.id != null ? ViewBag.id:null)" asp-area="Admin" asp-controller="Category" method="post">
 
             @if (ViewBag.id != null)
             {
@@ -34,12 +34,25 @@
 
 
             <div class="form-group text-right m-b-0">
-                <button class="btn btn-primary waves-effect waves-light" type="submit">
-                    ثبت گروه
-                </button>
-                <a asp-action="Index" class="btn btn-default waves-effect waves-light m-l-5">
-                    بازگشت
-                </a>
+
+                @if (ViewBag.id != null)
+                {<button class="btn btn-primary waves-effect waves-light" type="submit">
+                     ثبت زیر گروه
+                 </button>
+                    <a asp-action="ShowSubCategory" asp-route-id="@ViewBag.id" class="btn btn-default waves-effect waves-light m-l-5">
+                        بازگشت
+                    </a>
+                }
+                else
+                {
+                    <button class="btn btn-primary waves-effect waves-light" type="submit">
+                        ثبت گروه
+                    </button>
+                    <a asp-action="Index" class="btn btn-default waves-effect waves-light m-l-5">
+                        بازگشت
+                    </a>
+                }
+               
             </div>
 
         </form>

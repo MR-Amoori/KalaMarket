@@ -24,9 +24,10 @@ namespace KalaMarket.Areas.Admin.Controllers
             return View(_categoryService.ShowAllCategory());
         }
 
-        public IActionResult ShowSubCategory(int categoryId)
+        public IActionResult ShowSubCategory(int id)
         {
-            return View(_categoryService.ShowAllSubCategory(categoryId));
+            ViewBag.id = id;
+            return View(_categoryService.ShowAllSubCategory(id));
         }
 
         [HttpGet]
@@ -43,11 +44,20 @@ namespace KalaMarket.Areas.Admin.Controllers
             {
                 if (_categoryService.AddCategory(category) != 0)
                 {
-                    TempData["Result"] = "added";
-                    return RedirectToAction(nameof(Index));
+                    if (category.SubCategory == null)
+                    {
+                        TempData["Result"] = "added";
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+                        TempData["Result"] = "added";
+                        int id = category.SubCategory.Value;
+                        return Redirect("/admin/category/showsubcategory/"+id.ToString());
+                    }
                 }
             }
-
+            TempData["Result"] = "error";
             return View(category);
         }
 
@@ -75,6 +85,7 @@ namespace KalaMarket.Areas.Admin.Controllers
                     return RedirectToAction(nameof(Index));
                 }
             }
+            TempData["Result"] = "error";
             return View(category);
         }
 

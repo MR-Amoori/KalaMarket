@@ -70,7 +70,8 @@
                                                 @item.categoriEnTitle
                                             </td>
                                             <td>
-                                                <a asp-action="ShowSubCategory" asp-route-categoryId="@item.CategoryId" class="btn btn-success">زیر دسته ها</a>
+                                                <a asp-action="ShowSubCategory" asp-route-id="@item.CategoryId" class="btn btn-primary">زیر دسته ها</a>
+                                                <a asp-action="AddCategory" asp-route-id="@item.CategoryId" class="btn btn-success">افزودن زیر دسته </a>
                                             </td>
                                             <td class="actions">
                                                 <a asp-action="UpdateCategory" asp-route-categoryId="@item.CategoryId" class="on-default edit-row">
