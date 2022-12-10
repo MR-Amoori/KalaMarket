@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\adminPanel\assets\plugins\jstree\themes\default\" />
     <Folder Include="wwwroot\main\assets\images\menu-main\card\" />
   </ItemGroup>
 
