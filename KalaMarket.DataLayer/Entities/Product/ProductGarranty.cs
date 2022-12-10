@@ -17,6 +17,8 @@ namespace KalaMarket.DataLayer.Entities.Product
         [Display(Name = "نام گارانتی")]
         public string ProductGarrantyName { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         #region Relation
 
         public List<ProductPrice> ProductPrices { get; set; }

@@ -9,7 +9,6 @@ namespace KalaMarket.Core.Service.Interface
         List<ProductGarranty> ShowAllGarranties();
         ProductGarranty FindGarrantyBy(int id);
         bool UpdateGarranty(ProductGarranty garranty);
-        bool DeleteGarranty(ProductGarranty garranty);
         bool DeleteGarranty(int garrantyId);
         bool ExistGarrante(string garrantiName);
         int AddGarranty(ProductGarranty garranty);

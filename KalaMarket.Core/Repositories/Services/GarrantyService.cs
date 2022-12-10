@@ -18,7 +18,7 @@ namespace KalaMarket.Core.Repositories.Services
 
         public List<ProductGarranty> ShowAllGarranties()
         {
-            return _context.ProductGarranties.ToList();
+            return _context.ProductGarranties.Where(x => !x.IsDeleted).ToList();
         }
 
         public ProductGarranty FindGarrantyBy(int id)
@@ -41,11 +41,11 @@ namespace KalaMarket.Core.Repositories.Services
             }
         }
 
-        public bool DeleteGarranty(ProductGarranty garranty)
+        public bool DeleteGarranty(int garrantyId)
         {
             try
             {
-                _context.ProductGarranties.Remove(garranty);
+                FindGarrantyBy(garrantyId).IsDeleted = true;
                 Save();
                 return true;
             }
@@ -53,12 +53,6 @@ namespace KalaMarket.Core.Repositories.Services
             {
                 return false;
             }
-        }
-
-        public bool DeleteGarranty(int garrantyId)
-        {
-            var garranty = FindGarrantyBy(garrantyId);
-            return DeleteGarranty(garranty);
         }
 
         public bool ExistGarrante(string garrantiName)
