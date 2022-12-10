@@ -36,6 +36,8 @@ namespace KalaMarket
             services.AddScoped<IMainSliderService, MainSliderService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IGarrantyService, GarrantyService>();
+
 
 
             #endregion

@@ -30,8 +30,7 @@ namespace KalaMarket.Core.Repositories.Services
         {
             try
             {
-                var model = FindGarrantyBy(garranty.ProductGarrantyId);
-                model.ProductGarrantyName = garranty.ProductGarrantyName;
+                _context.ProductGarranties.Update(garranty);
                 Save();
                 return true;
             }
@@ -45,9 +44,9 @@ namespace KalaMarket.Core.Repositories.Services
         {
             try
             {
-                FindGarrantyBy(garrantyId).IsDeleted = true;
-                Save();
-                return true;
+                var garranty = FindGarrantyBy(garrantyId);
+                garranty.IsDeleted = true;
+                return UpdateGarranty(garranty);
             }
             catch
             {
