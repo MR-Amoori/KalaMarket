@@ -43,7 +43,7 @@
                             <p>زیر گروه با موفقیت ویرایش شد</p>
                         </div>
                     }
-                    <br/>
+                    <br />
                 }
 
 
@@ -53,53 +53,42 @@
                             <div class="col-sm-12">
                                 <table class="table table-striped dataTable no-footer" id="datatable-editable" role="grid" aria-describedby="datatable-editable_info">
                                     <thead>
-                                    <tr role="row">
-                                        <th class="sorting_asc" style="width: 25%;">نام گروه</th>
-                                        <th class="sorting" style="width: 25%;">نام انگلیسی</th>
-                                        <th class="sorting" style="width: 25%;">زیر مجموعه</th>
-                                        <th class="sorting_disabled" style="width: 25%;">فعالیت</th>
-                                    </tr>
+                                        <tr role="row">
+                                            <th class="sorting_asc" style="width: 25%;">نام زیر گروه</th>
+                                            <th class="sorting" style="width: 25%;">نام انگلیسی</th>
+                                            <th class="sorting_disabled" style="width: 25%;">فعالیت</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
 
-                                    @foreach (var item in Model)
-                                    {
-                                        <tr class="gradeX odd" role="row">
-                                            <td class="sorting_1">@item.categoriFaTitle</td>
-                                            <td>
-                                                @item.categoriEnTitle
-                                            </td>
-                                            <td>
-                                                @if (@item.SubCategory.Value != null)
-                                                {
-                                                    <a asp-action="ShowSubCategoryThree" asp-route-id="@item.CategoryId" class="btn btn-primary">زیر دسته ها</a>
-                                                }
-                                                else
-                                                {
-                                                    <a asp-action="ShowSubCategory" asp-route-id="@item.CategoryId" class="btn btn-primary">زیر دسته ها</a>
-                                                }
-                                                <a asp-action="AddCategory" asp-route-id="@item.CategoryId" class="btn btn-success">افزودن زیر دسته </a>
-                                            </td>
-                                            <td class="actions">
-                                                <a asp-action="UpdateCategory" asp-route-categoryId="@item.CategoryId" class="on-default edit-row">
-                                                    <i class="fa fa-pencil"></i>
-                                                </a>
-                                                <a asp-action="DeleteCategory" asp-route-categoryId="@item.CategoryId" class="on-default remove-row">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    }
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="gradeX odd" role="row">
+                                                <td class="sorting_1">@item.categoriFaTitle</td>
+                                                <td>
+                                                    @item.categoriEnTitle
+                                                </td>
+                                                <td class="actions">
+                                                    <a asp-action="UpdateCategory" asp-route-categoryId="@item.CategoryId" class="on-default edit-row">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </a>
+                                                    <a asp-action="DeleteCategory" asp-route-categoryId="@item.CategoryId" class="on-default remove-row">
+                                                        <i class="fa fa-trash-o"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
 
-                                    @if (Model == null)
-                                    {
+                                        @if (Model == null)
+                                        {
                                         <td>
                                             زیر گروهی یافت نشد
                                         </td>
                                     }
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -107,4 +96,4 @@
             </div>
         </div>
     </div>
-</div>
+
