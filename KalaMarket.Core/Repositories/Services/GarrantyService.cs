@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using KalaMarket.Core.Service.Interface;
 using KalaMarket.DataLayer.Context;
 using KalaMarket.DataLayer.Entities.Product;
@@ -16,37 +18,80 @@ namespace KalaMarket.Core.Repositories.Services
 
         public List<ProductGarranty> ShowAllGarranties()
         {
-            throw new System.NotImplementedException();
+            return _context.ProductGarranties.ToList();
         }
 
         public ProductGarranty FindGarrantyBy(int id)
         {
-            throw new System.NotImplementedException();
+            return _context.ProductGarranties.Find(id);
         }
 
         public bool UpdateGarranty(ProductGarranty garranty)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var model = FindGarrantyBy(garranty.ProductGarrantyId);
+                model.ProductGarrantyName = garranty.ProductGarrantyName;
+                Save();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public bool DeleteGarranty(ProductGarranty garranty)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                _context.ProductGarranties.Remove(garranty);
+                Save();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public bool ExistGarrante(string garrantiName, int garrantyId)
+        public bool DeleteGarranty(int garrantyId)
         {
-            throw new System.NotImplementedException();
+            var garranty = FindGarrantyBy(garrantyId);
+            return DeleteGarranty(garranty);
+        }
+
+        public bool ExistGarrante(string garrantiName)
+        {
+            return _context.ProductGarranties.Any(x =>
+                x.ProductGarrantyName == garrantiName);
         }
 
         public int AddGarranty(ProductGarranty garranty)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                if (ExistGarrante(garranty.ProductGarrantyName))
+                {
+                    var model = garranty;
+                    _context.ProductGarranties.Add(model);
+                    Save();
+                    return model.ProductGarrantyId;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
         public void Save()
         {
-            throw new System.NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }
