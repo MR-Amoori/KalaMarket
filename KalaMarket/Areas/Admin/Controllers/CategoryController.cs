@@ -29,6 +29,11 @@ namespace KalaMarket.Areas.Admin.Controllers
             ViewBag.id = id;
             return View(_categoryService.ShowAllSubCategory(id));
         }
+        public IActionResult ShowSubCategoryThree(int id)
+        {
+            ViewBag.id = id;
+            return View(_categoryService.ShowAllSubCategory(id));
+        }
 
         [HttpGet]
         public IActionResult AddCategory(int? id)
