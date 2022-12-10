@@ -5,9 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using KalaMarket.Core.Service.Interface;
 using KalaMarket.DataLayer.Entities.Product;
+using Microsoft.CodeAnalysis.FlowAnalysis;
 
 namespace KalaMarket.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class GarrantyController : Controller
     {
         private readonly IGarrantyService _garrantyService;
@@ -31,7 +33,14 @@ namespace KalaMarket.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddGarranty(ProductGarranty garranty)
         {
-            return RedirectToAction(nameof(Index));
+            if (!ModelState.IsValid) return View(garranty);
+
+            if (_garrantyService.AddGarranty(garranty) > 0)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(garranty);
         }
     }
 }

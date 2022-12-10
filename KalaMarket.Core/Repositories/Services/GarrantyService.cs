@@ -64,7 +64,7 @@ namespace KalaMarket.Core.Repositories.Services
         {
             try
             {
-                if (ExistGarrante(garranty.ProductGarrantyName))
+                if (! ExistGarrante(garranty.ProductGarrantyName))
                 {
                     var model = garranty;
                     _context.ProductGarranties.Add(model);
