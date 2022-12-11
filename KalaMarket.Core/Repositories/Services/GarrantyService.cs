@@ -51,7 +51,8 @@ namespace KalaMarket.Core.Repositories.Services
             {
                 var garranty = FindGarrantyBy(garrantyId);
                 garranty.IsDeleted = true;
-                return UpdateGarranty(garranty);
+                Save();
+                return true;
             }
             catch
             {

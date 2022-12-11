@@ -47,7 +47,7 @@ namespace KalaMarket.Areas.Admin.Controllers
 
         #endregion
 
-
+        [HttpPost]
         public IActionResult AddGarranty(ProductGarranty garranty)
         {
             if (!ModelState.IsValid)
@@ -75,6 +75,7 @@ namespace KalaMarket.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
         public IActionResult UpdateGarranty(ProductGarranty garranty)
         {
             if (!ModelState.IsValid)
@@ -88,24 +89,22 @@ namespace KalaMarket.Areas.Admin.Controllers
         }
 
 
-
         [HttpGet]
-        public IActionResult DeleteGarranty(int garrantyId)
+        public IActionResult DeleteGarranty(int id)
         {
-            var garranty = _garrantyService.FindGarrantyBy(garrantyId);
-            return PartialView("", garranty);
-        }
-
-        public IActionResult DeleteGarranty(ProductGarranty garranty)
-        {
-            if (!ModelState.IsValid)
+            var garranty = _garrantyService.FindGarrantyBy(id);
+            if (garranty != null)
             {
-                return RedirectToAction(nameof(Index));
+                if (_garrantyService.DeleteGarranty(id))
+                {
+                    TempData["Result"] = "deleted";
+                    return RedirectToAction(nameof(Index));
+                }
             }
 
-            bool result = _garrantyService.DeleteGarranty(garranty.ProductGarrantyId);
-            int sendJson = result == true ? 3 : 0;
-            return Json(sendJson);
+            TempData["Result"] = "error";
+            return RedirectToAction(nameof(Index));
         }
+
     }
 }
