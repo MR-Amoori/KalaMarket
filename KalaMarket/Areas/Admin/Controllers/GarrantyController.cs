@@ -47,11 +47,6 @@ namespace KalaMarket.Areas.Admin.Controllers
 
         #endregion
 
-        [HttpGet]
-        public IActionResult AddGarranty()
-        {
-            return PartialView("");
-        }
 
         public IActionResult AddGarranty(ProductGarranty garranty)
         {
@@ -61,8 +56,8 @@ namespace KalaMarket.Areas.Admin.Controllers
             }
 
             int garrantyId = _garrantyService.AddGarranty(garranty);
-            int sendJson = garrantyId > 0 ? 1 : 0;
-            return Json(sendJson);
+            TempData["Result"] = garrantyId > 0 ? "added" : "error";
+            return RedirectToAction(nameof(Index));
         }
 
 
