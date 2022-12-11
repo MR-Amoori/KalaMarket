@@ -62,10 +62,17 @@ namespace KalaMarket.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public IActionResult UpdateGarranty(int garrantyId)
+        public IActionResult UpdateGarranty(int id)
         {
-            var garranty = _garrantyService.FindGarrantyBy(garrantyId);
-            return PartialView("",garranty);
+            var garranty = _garrantyService.FindGarrantyBy(id);
+            if (garranty != null)
+            {
+                return View(garranty);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         public IActionResult UpdateGarranty(ProductGarranty garranty)
@@ -75,9 +82,9 @@ namespace KalaMarket.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            bool result = _garrantyService.UpdateGarranty(garranty);
-            int sendJson = result == true ? 2 : 0;
-            return Json(sendJson);
+            bool update = _garrantyService.UpdateGarranty(garranty);
+            TempData["Result"] = update == true  ? "edited" : "error";
+            return RedirectToAction(nameof(Index));
         }
 
 

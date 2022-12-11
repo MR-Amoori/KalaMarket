@@ -67,10 +67,10 @@
                                         <tr class="gradeX odd" role="row">
                                             <td class="sorting_1">@item.ProductGarrantyName</td>
                                             <td class="actions">
-                                                <a asp-action="" asp-route-categoryId="@item.ProductGarrantyId" class="on-default edit-row">
+                                                <a asp-action="UpdateGarranty" asp-route-id="@item.ProductGarrantyId" class="on-default edit-row">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
-                                                <a asp-action="" asp-route-categoryId="@item.ProductGarrantyId" class="on-default remove-row">
+                                                <a asp-action="" asp-route-id="@item.ProductGarrantyId" class="on-default remove-row">
                                                     <i class="fa fa-trash-o"></i>
                                                 </a>
                                             </td>
@@ -97,4 +97,4 @@
     </div>
 </div>
 
-<partial model="@garranty" name="_MainModal"/>
+<partial model="@garranty" name="_AddGarrantyModal"/>

@@ -30,9 +30,14 @@ namespace KalaMarket.Core.Repositories.Services
         {
             try
             {
-                _context.ProductGarranties.Update(garranty);
-                Save();
-                return true;
+                if (!ExistGarrante(garranty.ProductGarrantyName))
+                {
+                    _context.ProductGarranties.Update(garranty);
+                    Save();
+                    return true;
+                }
+
+                return false;
             }
             catch
             {

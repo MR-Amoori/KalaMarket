@@ -1,0 +1,26 @@
+﻿@model KalaMarket.DataLayer.Entities.Product.ProductGarranty
+@* Add *@
+
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="AddGarranty" asp-area="Admin" asp-controller="Garranty" method="post">
+                <div class="form-group">
+                    <label asp-for="ProductGarrantyName"></label>
+                    <input asp-for="ProductGarrantyName" class="form-control" data-parsley-id="4">
+                    <span asp-validation-for="ProductGarrantyName"></span>
+                </div>
+                <div class="form-group text-right m-b-0">
+
+                    <button class="btn btn-primary waves-effect waves-light" type="submit">
+                        ثبت گارانتی
+                    </button>
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="btn btn-default waves-effect waves-light m-l-5">
+                        بازگشت
+                    </button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
