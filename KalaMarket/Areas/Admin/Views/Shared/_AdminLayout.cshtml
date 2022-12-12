@@ -75,7 +75,7 @@
                         <img src="~/adminPanel/assets/images/users/avatar-10.jpg" alt="user-img" title="نام ادمین" class="img-circle img-thumbnail img-responsive">
                     </div>
                     <h5>
-                        <a href="#">نام ادمین</a>
+                        <a>نام ادمین</a>
                     </h5>
                     <ul class="list-inline">
                         <li>
@@ -122,8 +122,18 @@
                                 <li>
                                     <a asp-controller="Product" asp-action="ShowAllColor">رنگ ها</a>
                                 </li>
+                            </ul>
+                        </li>
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect">
+                                <i class="zmdi zmdi-invert-colors"></i> <span> دسته بندی ها </span> <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="list-unstyled">
                                 <li>
-                                    <a asp-controller="Product" asp-action="Index">صفحه اصلی</a>
+                                    <a asp-controller="Category" asp-action="Index">صفحه اصلی</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Category" asp-action="AddCategory">افزودن دسته بندی</a>
                                 </li>
                             </ul>
                         </li>
