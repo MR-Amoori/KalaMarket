@@ -93,5 +93,12 @@ namespace KalaMarket.Core.Repositories.Services
         }
 
         #endregion
+
+
+        public List<PropertyName> ShowAllPropertyNames()
+        {
+            return _context.PropertyNames.ToList();
+        }
+
     }
 }

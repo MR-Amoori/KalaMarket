@@ -17,7 +17,12 @@ namespace KalaMarket.Core.Service.Interface
 
         #endregion
 
+        #region Property Name
 
+        List<PropertyName> ShowAllPropertyNames();
+
+
+        #endregion
 
     }
 }

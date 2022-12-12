@@ -84,11 +84,18 @@ namespace KalaMarket.Areas.Admin.Controllers
             TempData["Result"] = "error";
             return RedirectToAction(nameof(ShowAllColor));
         }
-        
+
 
         #endregion
 
+        #region Property Name
 
+        public IActionResult ShowAllPropertyName()
+        {
+            return View(_productService.ShowAllPropertyNames());
+        }
+
+        #endregion
 
     }
 }
