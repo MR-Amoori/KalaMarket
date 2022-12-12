@@ -194,10 +194,13 @@ File: Menu
 .side-menu .waves-effect .waves-ripple {
   background-color: rgba(113, 182, 249, 0.4);
 }
-
+.content-page {
+  margin-right: 250px;
+  overflow: hidden;
+}
 .content-page .content {
   padding: 0px 5px;
-    margin-top: 10px;
+  margin-top: 73px;
 }
 .button-menu-mobile {
   background: transparent;
@@ -470,7 +473,9 @@ File: Menu
 #wrapper.enlarged .left.side-menu .user-details {
   display: none;
 }
-
+#wrapper.enlarged .content-page {
+  margin-right: 70px;
+}
 #wrapper.enlarged .footer {
   right: 70px;
 }
