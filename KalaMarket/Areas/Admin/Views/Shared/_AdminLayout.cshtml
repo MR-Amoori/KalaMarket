@@ -98,51 +98,32 @@
                         </li>
 
                         <li>
-                            <a asp-controller="Slider" asp-action="Index" class="waves-effect">
-                                <i class="zmdi zmdi-format-underlined"></i> <span> اسلایدر اصلی سایت </span>
+                            <a href="javascript:void(0);" class="waves-effect">
+                                <i class="zmdi zmdi-format-underlined"></i> <span> اسلایدر اصلی سایت </span> <span class="menu-arrow"></span>
                             </a>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a asp-controller="Slider" asp-action="Index">مشاهده لیست</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Slider" asp-action="AddMainSlider">افزودن اسلایدر</a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect">
-                                <i class="zmdi zmdi-invert-colors"></i> <span> رابط کاربی </span> <span class="menu-arrow"></span>
+                                <i class="zmdi zmdi-invert-colors"></i> <span> محصولات </span> <span class="menu-arrow"></span>
                             </a>
                             <ul class="list-unstyled">
                                 <li>
-                                    <a href="ui-buttons.html">دکمه ها</a>
+                                    <a asp-controller="Product" asp-action="Index">صفحه اصلی</a>
                                 </li>
                                 <li>
-                                    <a href="ui-cards.html">کارد</a>
+                                    <a asp-controller="Product" asp-action="ShowAllColor">رنگ ها</a>
                                 </li>
                                 <li>
-                                    <a href="ui-draggable-cards.html">کارت های جابه جا شونده</a>
-                                </li>
-                                <li>
-                                    <a href="ui-checkbox-radio.html">چک باکس ها</a>
-                                </li>
-                                <li>
-                                    <a href="ui-material-icons.html">آیکون های طراحی متریال</a>
-                                </li>
-                                <li>
-                                    <a href="ui-font-awesome-icons.html">فونت آسوم</a>
-                                </li>
-                                <li>
-                                    <a href="ui-themify-icons.html">تم فی آیکون</a>
-                                </li>
-                                <li>
-                                    <a href="ui-modals.html">مدل ها</a>
-                                </li>
-                                <li>
-                                    <a href="ui-notification.html">اطلاعات</a>
-                                </li>
-                                <li>
-                                    <a href="ui-range-slider.html">نوار تغیرات</a>
-                                </li>
-                                <li><a href="ui-components.html">اجزا</a>
-                                <li><a href="ui-sweetalert.html">هشدار ها</a>
-                                <li><a href="ui-treeview.html">نمایش درختی</a>
-                                <li>
-                                    <a href="ui-widgets.html">ویجت ها</a>
+                                    <a asp-controller="Product" asp-action="Index">صفحه اصلی</a>
                                 </li>
                             </ul>
                         </li>
