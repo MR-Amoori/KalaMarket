@@ -25,6 +25,8 @@ namespace KalaMarket.Core.Service.Interface
         bool UpdatePropertyName(PropertyName property);
         bool DeletePropertyName(int id);
         bool ExistsProperty(string name);
+        bool AddPropertyNameForCategory(List<PropertyNameToCategory> category);
+
         #endregion
 
     }

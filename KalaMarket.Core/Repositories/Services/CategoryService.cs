@@ -90,5 +90,10 @@ namespace KalaMarket.Core.Repositories.Services
         {
             return _context.Categories.Where(x => !x.IsDeleted).FirstOrDefault(x => x.CategoryId == id);
         }
+
+        public List<Category> ShowSubCategories()
+        {
+            return _context.Categories.Where(x => x.SubCategory != null).ToList();
+        }
     }
 }

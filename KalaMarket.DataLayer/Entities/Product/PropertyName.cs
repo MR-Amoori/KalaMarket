@@ -13,8 +13,8 @@ namespace KalaMarket.DataLayer.Entities.Product
 
         [Required(ErrorMessage = "* وارد کردن {0} اجباری است")]
         [Display(Name = "عنوان خصوصیت")]
-        [MaxLength(100, ErrorMessage = "* وارد کردن بیش از {0} کاراکتر مجاز نیست")]
-        [MinLength(5, ErrorMessage = "* وارد کردن کمتر از {0} کاراکتر مجاز نیست")]
+        [MaxLength(100, ErrorMessage = "* وارد کردن بیش از {1} کاراکتر مجاز نیست")]
+        [MinLength(2, ErrorMessage = "* وارد کردن کمتر از {1} کاراکتر مجاز نیست")]
         public string PropertyNameTitle { get; set; }
 
         #region Relation

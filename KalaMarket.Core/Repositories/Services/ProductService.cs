@@ -111,15 +111,11 @@ namespace KalaMarket.Core.Repositories.Services
         {
             try
             {
-                if (!ExistsProperty(property.PropertyNameTitle))
-                {
-                    var model = property;
-                    _context.PropertyNames.Add(model);
-                    Save();
-                    return model.PropertyNameId;
-                }
-
-                return 0;
+                if (ExistsProperty(property.PropertyNameTitle)) return 0;
+                var model = property;
+                _context.PropertyNames.Add(model);
+                Save();
+                return model.PropertyNameId;
             }
             catch
             {
@@ -159,6 +155,20 @@ namespace KalaMarket.Core.Repositories.Services
         public bool ExistsProperty(string name)
         {
             return _context.PropertyNames.Any(x => x.PropertyNameTitle == name);
+        }
+
+        public bool AddPropertyNameForCategory(List<PropertyNameToCategory> category)
+        {
+            try
+            {
+                _context.PropertyNameToCategories.AddRange(category);
+                Save();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         #endregion

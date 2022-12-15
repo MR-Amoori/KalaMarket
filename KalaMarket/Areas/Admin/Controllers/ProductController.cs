@@ -12,10 +12,12 @@ namespace KalaMarket.Areas.Admin.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
+            _categoryService = categoryService;
         }
 
         public IActionResult Index()
@@ -93,6 +95,54 @@ namespace KalaMarket.Areas.Admin.Controllers
         public IActionResult ShowAllPropertyName()
         {
             return View(_productService.ShowAllPropertyNames());
+        }
+
+        [HttpGet]
+        public IActionResult AddPropertyName()
+        {
+            ViewBag.Category = _categoryService.ShowSubCategories();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddPropertyName(PropertyName propertyName, List<int> categoryid)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Category = _categoryService.ShowSubCategories();
+                return View(propertyName);
+            }
+
+            int nameId = _productService.AddPropertyName(propertyName);
+
+            if (nameId <= 0)
+            {
+                ViewBag.Category = _categoryService.ShowSubCategories();
+                return View(propertyName);
+            }
+
+            List<PropertyNameToCategory> addPropertyNameToCategories = new List<PropertyNameToCategory>();
+
+            foreach (int item in categoryid)
+            {
+                addPropertyNameToCategories.Add(new PropertyNameToCategory()
+                {
+                    CategoryId = item,
+                    PropertyNameId = nameId
+                });
+            }
+
+            bool res = _productService.AddPropertyNameForCategory(addPropertyNameToCategories);
+
+            if (res)
+            {
+                ViewData["Result"] = "added";
+                return RedirectToAction(nameof(ShowAllPropertyName));
+            }
+
+            ViewBag.Category = _categoryService.ShowSubCategories();
+            return View(propertyName);
+
         }
 
         #endregion

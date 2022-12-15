@@ -13,6 +13,6 @@ namespace KalaMarket.Core.Service.Interface
         void Save();
         List<Category> ShowAllSubCategory(int categoryId);
         Category FindCategotyBy(int id);
-
+        List<Category> ShowSubCategories();
     }
 }
