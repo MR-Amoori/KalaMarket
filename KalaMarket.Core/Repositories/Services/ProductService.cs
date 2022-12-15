@@ -95,10 +95,72 @@ namespace KalaMarket.Core.Repositories.Services
         #endregion
 
 
+        #region Property Name
+
         public List<PropertyName> ShowAllPropertyNames()
         {
             return _context.PropertyNames.ToList();
         }
 
+        public PropertyName FindPropertyNameBy(int id)
+        {
+            return _context.PropertyNames.Find(id);
+        }
+
+        public int AddPropertyName(PropertyName property)
+        {
+            try
+            {
+                if (!ExistsProperty(property.PropertyNameTitle))
+                {
+                    var model = property;
+                    _context.PropertyNames.Add(model);
+                    Save();
+                    return model.PropertyNameId;
+                }
+
+                return 0;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public bool UpdatePropertyName(PropertyName property)
+        {
+            try
+            {
+                _context.PropertyNames.Update(property);
+                Save();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeletePropertyName(int id)
+        {
+            try
+            {
+                var property = FindPropertyNameBy(id);
+                _context.PropertyNames.Remove(property);
+                Save();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool ExistsProperty(string name)
+        {
+            return _context.PropertyNames.Any(x => x.PropertyNameTitle == name);
+        }
+
+        #endregion
     }
 }

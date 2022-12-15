@@ -20,8 +20,11 @@ namespace KalaMarket.Core.Service.Interface
         #region Property Name
 
         List<PropertyName> ShowAllPropertyNames();
-
-
+        PropertyName FindPropertyNameBy(int id);
+        int AddPropertyName(PropertyName property);
+        bool UpdatePropertyName(PropertyName property);
+        bool DeletePropertyName(int id);
+        bool ExistsProperty(string name);
         #endregion
 
     }
